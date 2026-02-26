@@ -1,0 +1,309 @@
+# Universal AI Business Automation Platform — Architecture & Implementation Plan
+
+## Overview
+
+**FlowBot** is a config-driven, multi-tenant AI automation backend. The same codebase serves any business — a restaurant, a clinic, a tutoring centre — by swapping a YAML config and knowledge files. No code changes required.
+
+---
+
+## 1. Folder Structure
+
+```
+c:\flowBot\
+│
+├── app/                          # ← All application source code
+│   ├── __init__.py
+│   ├── main.py                   # FastAPI app entry-point
+│   ├── config.py                 # App-wide settings (env vars, DB URL, LLM key)
+│   │
+│   ├── api/                      # REST endpoints (routers)
+│   │   ├── __init__.py
+│   │   ├── messages.py           # POST /messages  — Message Intake
+│   │   ├── businesses.py         # CRUD for business profiles
+│   │   └── leads.py              # View / export captured leads
+│   │
+│   ├── core/                     # Business logic — the "brain"
+│   │   ├── __init__.py
+│   │   ├── brain.py              # AI Brain — LLM call + memory
+│   │   ├── decision.py           # Decision Engine — intent classifier
+│   │   ├── knowledge.py          # Knowledge System — FAQ retrieval
+│   │   └── actions.py            # Action Engine — reply, lead, email, book
+│   │
+│   ├── models/                   # SQLAlchemy ORM models
+│   │   ├── __init__.py
+│   │   ├── business.py           # businesses table
+│   │   ├── conversation.py       # conversations table
+│   │   ├── lead.py               # leads table
+│   │   └── action_log.py         # actions_log table
+│   │
+│   ├── schemas/                  # Pydantic request/response schemas
+│   │   ├── __init__.py
+│   │   ├── message.py
+│   │   ├── business.py
+│   │   └── lead.py
+│   │
+│   ├── db/                       # Database utilities
+│   │   ├── __init__.py
+│   │   ├── session.py            # Engine + SessionLocal factory
+│   │   └── init_db.py            # Create tables on first run
+│   │
+│   ├── services/                 # Thin adapters for external systems
+│   │   ├── __init__.py
+│   │   ├── llm_client.py         # OpenAI / any LLM HTTP wrapper
+│   │   └── email_client.py       # Email sender (mock first)
+│   │
+│   └── utils/                    # Shared helpers
+│       ├── __init__.py
+│       ├── prompt_builder.py     # Build system prompt from business config
+│       └── logger.py             # Structured logging
+│
+├── business_configs/             # ← Per-business config (YAML)
+│   ├── _template.yaml            # Starter template for onboarding
+│   ├── demo_clinic.yaml          # Example: medical clinic
+│   └── demo_restaurant.yaml      # Example: restaurant
+│
+├── knowledge_base/               # ← Per-business knowledge files
+│   ├── demo_clinic/
+│   │   ├── faqs.json
+│   │   ├── services.json
+│   │   └── pricing.json
+│   └── demo_restaurant/
+│       ├── faqs.json
+│       ├── menu.json
+│       └── pricing.json
+│
+├── tests/                        # Pytest test suite
+│   ├── __init__.py
+│   ├── test_messages.py
+│   ├── test_brain.py
+│   ├── test_decision.py
+│   └── test_knowledge.py
+│
+├── alembic/                      # DB migrations (optional, later phase)
+│
+├── .env.example                  # Environment variable template
+├── requirements.txt              # Python dependencies
+├── pyproject.toml                # Project metadata
+└── README.md                     # How to run, onboard a business
+```
+
+---
+
+## 2. Database Schema
+
+Four tables, all scoped by `business_id`:
+
+```mermaid
+erDiagram
+    BUSINESSES {
+        uuid id PK
+        string name
+        string slug
+        string config_path
+        datetime created_at
+    }
+    CONVERSATIONS {
+        uuid id PK
+        uuid business_id FK
+        string session_id
+        string role
+        text content
+        datetime created_at
+    }
+    LEADS {
+        uuid id PK
+        uuid business_id FK
+        string name
+        string phone
+        string email
+        string source
+        json extra_data
+        datetime created_at
+    }
+    ACTIONS_LOG {
+        uuid id PK
+        uuid business_id FK
+        uuid conversation_id FK
+        string action_type
+        json payload
+        string status
+        datetime created_at
+    }
+
+    BUSINESSES ||--o{ CONVERSATIONS : has
+    BUSINESSES ||--o{ LEADS : captures
+    BUSINESSES ||--o{ ACTIONS_LOG : triggers
+    CONVERSATIONS ||--o{ ACTIONS_LOG : generates
+```
+
+---
+
+## 3. Data Flow — End-to-End Message Lifecycle
+
+```mermaid
+sequenceDiagram
+    participant Client as User / WhatsApp
+    participant API as Message Intake API
+    participant Brain as AI Brain
+    participant Decision as Decision Engine
+    participant Knowledge as Knowledge System
+    participant Actions as Action Engine
+    participant DB as Database
+
+    Client->>API: POST /messages {business_id, session_id, text}
+    API->>DB: Load business config & conversation history
+    API->>Brain: Pass message + history + business config
+
+    Brain->>Knowledge: Retrieve relevant FAQs / services
+    Knowledge-->>Brain: Matching knowledge snippets
+
+    Brain->>Decision: Classify intent of user message
+    Decision-->>Brain: Intent (question | lead | booking | support | action)
+
+    Brain->>Brain: Build dynamic system prompt + call LLM
+    Brain-->>API: AI reply + detected intent + planned actions
+
+    API->>Actions: Execute planned actions
+    Actions->>DB: Save lead / log action / queue email
+    Actions-->>API: Action results
+
+    API->>DB: Save conversation turn (user + assistant)
+    API-->>Client: JSON response {reply, intent, actions_taken}
+```
+
+### Step-by-step walkthrough
+
+| # | What happens | Module | Database write |
+|---|---|---|---|
+| 1 | User sends a message via API | `api/messages.py` | — |
+| 2 | Load business config (YAML) and recent history | `db/session.py`, `config.py` | read `businesses` |
+| 3 | Fetch matching knowledge (FAQ, pricing) | `core/knowledge.py` | — |
+| 4 | Classify intent | `core/decision.py` | — |
+| 5 | Build system prompt from template + config + knowledge | `utils/prompt_builder.py` | — |
+| 6 | Call LLM with prompt + conversation history | `core/brain.py` → `services/llm_client.py` | — |
+| 7 | Execute actions (save lead, mock email, etc.) | `core/actions.py` | write `leads`, `actions_log` |
+| 8 | Save conversation turns | `api/messages.py` | write `conversations` |
+| 9 | Return JSON response to caller | `api/messages.py` | — |
+
+---
+
+## 4. Business Config File Example
+
+Each business is onboarded by dropping a YAML file:
+
+```yaml
+# business_configs/demo_clinic.yaml
+business:
+  name: "City Health Clinic"
+  slug: "demo_clinic"
+  industry: "healthcare"
+
+role: "receptionist"
+greeting: "Hello! Welcome to City Health Clinic. How can I help you today?"
+
+personality:
+  tone: "professional and caring"
+  language: "English"
+
+services:
+  - General Checkup
+  - Dental Cleaning
+  - Eye Exam
+
+rules:
+  - "Always ask for the patient's name and phone before booking."
+  - "Never give medical advice; suggest an appointment instead."
+  - "If unsure, say: 'Let me check with the doctor and get back to you.'"
+
+knowledge_dir: "knowledge_base/demo_clinic"
+```
+
+The **prompt builder** injects these values into a system-prompt template at runtime, so the LLM behaves as the configured role for that business.
+
+---
+
+## 5. Proposed Changes — Phased Build
+
+### Phase 2 — Foundation
+
+#### [NEW] [requirements.txt](file:///c:/flowBot/requirements.txt)
+Dependencies: `fastapi`, `uvicorn`, `sqlalchemy`, `pydantic`, `python-dotenv`, `openai`, `pyyaml`, `pytest`, `httpx`.
+
+#### [NEW] [config.py](file:///c:/flowBot/app/config.py)
+Reads `.env` for `DATABASE_URL`, `OPENAI_API_KEY`, `LOG_LEVEL`.
+
+#### [NEW] Database models (`app/models/`)
+Four ORM classes matching the schema above, using SQLAlchemy 2.0 style.
+
+#### [NEW] [session.py](file:///c:/flowBot/app/db/session.py)
+SQLite engine (swap to PostgreSQL with one env-var change) and session factory.
+
+---
+
+### Phase 3 — Core Modules
+
+#### [NEW] [messages.py](file:///c:/flowBot/app/api/messages.py)
+`POST /api/v1/messages` — validates input, orchestrates the full data-flow pipeline.
+
+#### [NEW] [brain.py](file:///c:/flowBot/app/core/brain.py)
+Loads conversation history, builds the prompt, calls the LLM, returns reply + intent.
+
+#### [NEW] [decision.py](file:///c:/flowBot/app/core/decision.py)
+Classifies user intent using a structured LLM call (returns one of 5 categories).
+
+#### [NEW] [knowledge.py](file:///c:/flowBot/app/core/knowledge.py)
+Loads JSON files from the business's `knowledge_dir`, performs keyword-based retrieval.
+
+#### [NEW] [actions.py](file:///c:/flowBot/app/core/actions.py)
+Dispatch table: `send_reply`, `create_lead`, `send_email` (mock), `schedule_booking` (mock).
+
+---
+
+### Phase 4 — Multi-Business
+
+#### [NEW] [_template.yaml](file:///c:/flowBot/business_configs/_template.yaml)
+Blank business config that a new client fills in.
+
+#### [NEW] Example configs + knowledge files
+Two demo businesses (clinic, restaurant) with FAQs and pricing.
+
+---
+
+## 6. Verification Plan
+
+### Automated Tests
+
+```bash
+# Run the full test suite (from project root)
+cd c:\flowBot
+pytest tests/ -v
+```
+
+| Test file | What it verifies |
+|---|---|
+| `test_messages.py` | API returns 200, saves conversation, returns valid JSON |
+| `test_brain.py` | Prompt builder produces correct system prompt per business |
+| `test_decision.py` | Intent classifier returns valid categories |
+| `test_knowledge.py` | Knowledge retrieval returns matching FAQs |
+
+### Manual Verification
+
+1. **Start the server**
+   ```bash
+   cd c:\flowBot
+   uvicorn app.main:app --reload
+   ```
+2. **Open interactive docs**: visit `http://127.0.0.1:8000/docs`
+3. **Send a test message** via the `/api/v1/messages` endpoint:
+   ```json
+   {
+     "business_id": "<demo_clinic uuid>",
+     "session_id": "test-session-1",
+     "text": "What are your prices for a dental cleaning?"
+   }
+   ```
+4. **Verify the response** contains an AI-generated reply referencing the clinic's pricing.
+5. **Check the database** — confirm rows created in `conversations`, `leads` (if applicable), and `actions_log`.
+
+> [!IMPORTANT]
+> An `OPENAI_API_KEY` (or compatible LLM key) is required for the AI Brain to function. During tests, the LLM client will be mocked so tests run without a real API key.

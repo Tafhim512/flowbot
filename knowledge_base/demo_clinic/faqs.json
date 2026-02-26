@@ -1,0 +1,42 @@
+[
+  {
+    "question": "What are your office hours?",
+    "answer": "We're open Monday through Friday from 8 AM to 6 PM, and Saturday from 9 AM to 1 PM. We're closed on Sundays."
+  },
+  {
+    "question": "Do you accept insurance?",
+    "answer": "Yes, we accept most major insurance plans including Blue Cross, Aetna, United Healthcare, and Cigna. Please verify with your insurance provider."
+  },
+  {
+    "question": "How do I schedule an appointment?",
+    "answer": "You can schedule an appointment by calling us at (555) 123-4567, or by providing your name and phone number and we'll call you back."
+  },
+  {
+    "question": "What should I bring to my first visit?",
+    "answer": "Please bring a valid photo ID, your insurance card, a list of current medications, and any relevant medical records."
+  },
+  {
+    "question": "Do you offer telehealth services?",
+    "answer": "Yes, we offer telehealth consultations for follow-up visits and minor concerns. Please ask about availability."
+  },
+  {
+    "question": "What is your cancellation policy?",
+    "answer": "We request 24 hours notice for cancellations. Please call us as soon as possible if you need to cancel or reschedule."
+  },
+  {
+    "question": "Where are you located?",
+    "answer": "We're located at 123 Healthcare Avenue, New York, NY 10001. Parking is available in the rear of the building."
+  },
+  {
+    "question": "Do you have emergency services?",
+    "answer": "For medical emergencies, please call 911 or go to your nearest emergency room. For urgent but non-emergency issues during office hours, please call us."
+  },
+  {
+    "question": "How early should I arrive for my appointment?",
+    "answer": "Please arrive 15-20 minutes early to complete any necessary paperwork and update your information."
+  },
+  {
+    "question": "Can I get my test results online?",
+    "answer": "Yes, we have a patient portal where you can view your test results. Please ask our staff about setting up your account."
+  }
+]

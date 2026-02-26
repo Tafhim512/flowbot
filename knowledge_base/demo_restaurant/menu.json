@@ -1,0 +1,122 @@
+[
+  {
+    "category": "Appetizers",
+    "items": [
+      {
+        "name": "Crispy Calamari",
+        "description": "Lightly fried calamari with marinara sauce and lemon aioli",
+        "price": "$16"
+      },
+      {
+        "name": "Bruschetta Trio",
+        "description": "Three classic bruschetta variations on toasted sourdough",
+        "price": "$14"
+      },
+      {
+        "name": "Soup of the Day",
+        "description": "Ask your server about today's selection",
+        "price": "$10"
+      },
+      {
+        "name": "Caesar Salad",
+        "description": "Romaine hearts, house-made croutons, parmesan, classic dressing",
+        "price": "$12"
+      },
+      {
+        "name": "Beef Carpaccio",
+        "description": "Thinly sliced raw beef with arugula, capers, and truffle oil",
+        "price": "$18"
+      }
+    ]
+  },
+  {
+    "category": "Main Courses",
+    "items": [
+      {
+        "name": "Grilled Ribeye Steak",
+        "description": "12oz prime ribeye with roasted vegetables and truffle mashed potatoes",
+        "price": "$48"
+      },
+      {
+        "name": "Pan-Seared Salmon",
+        "description": "Atlantic salmon with lemon butter sauce, asparagus, and wild rice",
+        "price": "$34"
+      },
+      {
+        "name": "Chicken Marsala",
+        "description": "Pan-seared chicken breast with mushroom marsala sauce and pasta",
+        "price": "$28"
+      },
+ {
+        "name": "Lobster Linguine",
+        "description": "Fresh Maine lobster with cherry tomatoes in white wine garlic sauce",
+        "price": "$42"
+      },
+      {
+        "name": "Vegetable Risotto",
+        "description": "Creamy arborio rice with seasonal vegetables and parmesan",
+        "price": "$24"
+      },
+      {
+        "name": "Duck Confit",
+        "description": "Slow-cooked duck leg with cherry gastrique and roasted potatoes",
+        "price": "$38"
+      }
+    ]
+  },
+  {
+    "category": "Desserts",
+    "items": [
+      {
+        "name": "Tiramisu",
+        "description": "Classic Italian dessert with espresso-soaked ladyfingers and mascarpone",
+        "price": "$12"
+      },
+      {
+        "name": "Chocolate Lava Cake",
+        "description": "Warm chocolate cake with molten center and vanilla ice cream",
+        "price": "$14"
+      },
+      {
+        "name": "Crème Brûlée",
+        "description": "Classic vanilla custard with caramelized sugar top",
+        "price": "$10"
+      },
+      {
+        "name": "Cheesecake",
+        "description": "New York style cheesecake with berry compote",
+        "price": "$11"
+      }
+    ]
+  },
+  {
+    "category": "Beverages",
+    "items": [
+      {
+        "name": "House Red Wine",
+        "description": "Glass of our rotating selection",
+        "price": "$12"
+      },
+      {
+        "name": "House White Wine",
+        "description": "Glass of our rotating selection",
+        "price": "$12"
+      },
+      {
+        "name": "Craft Cocktails",
+        "description": "Ask about our seasonal cocktail menu",
+        "price": "$14-$18"
+      },
+      {
+        "name": "Espresso",
+        "description": "Single or double shot",
+        "price": "$4"
+      },
+      {
+        "name": "French Press Coffee",
+        "description": "For two people",
+        "price": "$8"
+      }
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "General Check-ups",
+    "description": "Routine health examinations to assess overall wellness and identify potential health concerns early.",
+    "price": "$100-$150",
+    "duration": "30 minutes"
+  },
+  {
+    "name": "Annual Physical Examinations",
+    "description": "Comprehensive yearly physical exam including vital signs, health history review, and preventive care recommendations.",
+    "price": "$200-$350",
+    "duration": "45-60 minutes"
+  },
+  {
+    "name": "Vaccinations and Immunizations",
+    "description": "Various vaccines including flu shots, COVID-19, tetanus, and travel vaccinations.",
+    "price": "$25-$150",
+    "duration": "15 minutes"
+  },
+  {
+    "name": "Lab Work and Testing",
+    "description": "Blood work, urine tests, and other laboratory services for diagnostic purposes.",
+    "price": "Varies by test",
+    "duration": "10-15 minutes"
+  },
+  {
+    "name": "Specialist Referrals",
+    "description": "Coordination of care with specialists in cardiology, dermatology, orthopedics, and more.",
+    "price": "Consultation only",
+    "duration": "30 minutes"
+  },
+  {
+    "name": "Telehealth Consultations",
+    "description": "Virtual appointments for follow-ups, minor illnesses, medication refills, and health questions.",
+    "price": "$75-$125",
+    "duration": "15-20 minutes"
+  },
+  {
+    "name": "Prescription Refills",
+    "description": "Quick prescription refills for ongoing medications. Please have your prescription bottle ready.",
+    "price": "Free with visit",
+    "duration": "Same day"
+  },
+  {
+    "name": "Women's Health",
+    "description": "Women's wellness exams, Pap smears, breast health screenings, and menopause management.",
+    "price": "$150-$300",
+    "duration": "30-45 minutes"
+  },
+  {
+    "name": "Men's Health",
+    "description": "Men's wellness exams, prostate screenings, and cardiovascular health assessments.",
+    "price": "$150-$300",
+    "duration": "30-45 minutes"
+  },
+  {
+    "name": "Pediatric Care",
+    "description": "Healthcare services for children from newborns to adolescents, including well-child visits.",
+    "price": "$100-$250",
+    "duration": "20-45 minutes"
+  }
+]

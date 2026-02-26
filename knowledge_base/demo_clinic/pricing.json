@@ -1,0 +1,67 @@
+[
+  {
+    "item": "New Patient Visit",
+    "price": "$150-$250",
+    "description": "Comprehensive initial consultation with a healthcare provider"
+  },
+  {
+    "item": "Follow-up Visit",
+    "price": "$75-$125",
+    "description": "Return visit with a provider for ongoing care"
+  },
+  {
+    "item": "Annual Physical",
+    "price": "$200-$350",
+    "description": "Complete yearly physical examination"
+  },
+  {
+    "item": "Lab Work - Basic Blood Panel",
+    "price": "$50-$100",
+    "description": "Complete blood count (CBC) and basic metabolic panel"
+  },
+  {
+    "item": "Lab Work - Lipid Panel",
+    "price": "$40-$80",
+    "description": "Cholesterol and triglyceride testing"
+  },
+  {
+    "item": "Flu Vaccine",
+    "price": "$25-$45",
+    "description": "Annual flu shot (varies by brand)"
+  },
+  {
+    "item": "COVID-19 Vaccine",
+    "price": "$0-$75",
+    "description": "Based on availability and insurance coverage"
+  },
+  {
+    "item": "Tetanus Vaccine",
+    "price": "$35-$60",
+    "description": "Tdap or Td vaccination"
+  },
+  {
+    "item": "Travel Vaccinations",
+    "price": "$50-$150 each",
+    "description": "Varies by destination and vaccine type"
+  },
+  {
+    "item": "Telehealth Visit",
+    "price": "$75-$125",
+    "description": "Virtual consultation with a provider"
+  },
+  {
+    "item": "Urgent Care Visit",
+    "price": "$125-$200",
+    "description": "Same-day appointment for non-emergency urgent issues"
+  },
+  {
+    "item": "Pap Smear",
+    "price": "$75-$150",
+    "description": "Cervical cancer screening"
+  },
+  {
+    "item": "Prescription Refill",
+    "price": "Free with visit",
+    "description": "Medication refills for existing patients"
+  }
+]

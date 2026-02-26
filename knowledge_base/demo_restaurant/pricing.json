@@ -1,0 +1,62 @@
+[
+  {
+    "item": "Appetizers",
+    "price": "$10-$18",
+    "description": "Starters, soups, salads, and small plates"
+  },
+  {
+    "item": "Main Courses",
+    "price": "$24-$48",
+    "description": "Entrees including steak, seafood, pasta, and chicken"
+  },
+  {
+    "item": "Desserts",
+    "price": "$10-$14",
+    "description": "Sweet treats including tiramisu, lava cake, and crème brûlée"
+  },
+  {
+    "item": "Wine by Glass",
+    "price": "$12-$25",
+    "description": "Selection of house reds and whites"
+  },
+  {
+    "item": "Wine by Bottle",
+    "price": "$45-$200+",
+    "description": "Extensive wine list with options for every budget"
+  },
+  {
+    "item": "Craft Cocktails",
+    "price": "$14-$18",
+    "description": "Seasonal cocktails crafted by our bartenders"
+  },
+  {
+    "item": "Prix Fixe Menu",
+    "price": "$75 per person",
+    "description": "3-course tasting menu (available Tuesday-Thursday)"
+  },
+  {
+    "item": "Chef's Tasting Menu",
+    "price": "$120 per person",
+    "description": "5-course experiential tasting menu with wine pairings available"
+  },
+  {
+    "item": "Private Dining Room",
+    "price": "$200-$500 rental fee",
+    "description": "Private room rental (food minimum required)"
+  },
+  {
+    "item": "Catering - Per Person",
+    "price": "$35-$75",
+    "description": "Full-service catering with customizable menus"
+  },
+  {
+    "item": "Gift Cards",
+    "price": "$25-$500",
+    "description": "Available in any denomination"
+  },
+  {
+    "item": "Kids Menu",
+    "price": "$12",
+    "description": "Includes entree, drink, and dessert"
+  }
+]

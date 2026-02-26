@@ -1,0 +1,102 @@
+# Demo Restaurant Configuration
+
+business:
+  name: "The Gourmet Kitchen"
+  slug: "demo_restaurant"
+  industry: "food_service"
+  timezone: "America/New_York"
+
+# AI Role for a restaurant - Host/Server
+role: "restaurant_host"
+
+# Business hours
+hours:
+  monday: "11:00-22:00"
+  tuesday: "11:00-22:00"
+  wednesday: "11:00-22:00"
+  thursday: "11:00-22:00"
+  friday: "11:00-23:00"
+  saturday: "10:00-23:00"
+  sunday: "10:00-21:00"
+
+# Location info
+location:
+  address: "456 Culinary Street"
+  city: "New York"
+  state: "NY"
+  zip: "10002"
+  phone: "(555) 987-6543"
+  email: "reservations@gourmetkitchen.com"
+
+# AI Personality - Warm, welcoming, enthusiastic
+personality:
+  tone: "friendly"
+  language: "English"
+  greeting: "Welcome to The Gourmet Kitchen! I'm here to help you have a wonderful dining experience. How can I assist you?"
+  name: "Host"
+
+# Response rules for restaurant setting
+rules:
+  - "Be warm, welcoming, and enthusiastic"
+  - "Mention daily specials when appropriate"
+  - "Collect contact info for reservations"
+  - "Note dietary restrictions"
+  - "Confirm party size and date/time"
+  - "Mention current promotions or events"
+  - "Never share customer information"
+
+# Services offered
+services:
+  - "Dine-in Reservations"
+  - "Private Dining"
+  - "Catering Services"
+  - "Special Events Hosting"
+  - "Gift Cards"
+  - "Takeout and Delivery"
+
+# Common FAQs
+faqs:
+  - question: "What are your hours?"
+    answer: "We're open Monday through Thursday from 11 AM to 10 PM, Friday and Saturday from 10 AM to 11 PM, and Sunday from 10 AM to 9 PM."
+  - question: "Do you take reservations?"
+    answer: "Yes! We highly recommend reservations, especially for weekends. You can book through me or call (555) 987-6543."
+  - question: "Do you have private dining?"
+    answer: "Yes, we have private dining rooms available for special events and parties. Please contact us for more details."
+  - question: "Is there parking?"
+    answer: "We have a parking lot behind the restaurant, and there are several public parking garages within walking distance."
+  - question: "Do you accommodate dietary restrictions?"
+    answer: "Absolutely! We have vegetarian, vegan, and gluten-free options. Please inform us of any dietary restrictions when making your reservation."
+  - question: "What is your cancellation policy?"
+    answer: "We appreciate at least 24 hours notice for cancellations. Please call us if you need to modify or cancel your reservation."
+  - question: "Do you offer catering?"
+    answer: "Yes, we offer full-service catering for events of any size. Please call us to discuss your catering needs."
+  - question: "Where are you located?"
+    answer: "We're located at 456 Culinary Street, New York, NY 10002, in the heart of the culinary district."
+
+# Menu highlights / pricing
+pricing:
+  - item: "Appetizers"
+    price: "$12-$25"
+    description: "Starters, soups, salads"
+  - item: "Main Courses"
+    price: "$25-$50"
+    description: "Entrees, pasta, seafood, steaks"
+  - item: "Desserts"
+    price: "$8-$15"
+    description: "Sweet treats and coffee"
+  - item: "Wine by Glass"
+    price: "$12-$25"
+    description: "Selection of reds and whites"
+  - item: "Prix Fixe Menu"
+    price: "$75 per person"
+    description: "3-course tasting menu"
+
+# Knowledge base directory
+knowledge_dir: "knowledge_base/demo_restaurant"
+
+# Automation settings
+automation:
+  auto_create_lead: true
+  auto_reply: true
+  send_confirmation_email: true
+  collect_feedback: true

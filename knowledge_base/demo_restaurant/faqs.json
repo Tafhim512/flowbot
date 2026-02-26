@@ -1,0 +1,50 @@
+[
+  {
+    "question": "What are your hours?",
+    "answer": "We're open Monday through Thursday from 11 AM to 10 PM, Friday and Saturday from 10 AM to 11 PM, and Sunday from 10 AM to 9 PM."
+  },
+  {
+    "question": "Do you take reservations?",
+    "answer": "Yes! We highly recommend reservations, especially for weekends. You can book through me or call (555) 987-6543."
+  },
+  {
+    "question": "Do you have private dining?",
+    "answer": "Yes, we have private dining rooms available for special events and parties. Please contact us for more details."
+  },
+  {
+    "question": "Is there parking?",
+    "answer": "We have a parking lot behind the restaurant, and there are several public parking garages within walking distance."
+  },
+  {
+    "question": "Do you accommodate dietary restrictions?",
+    "answer": "Absolutely! We have vegetarian, vegan, and gluten-free options. Please inform us of any dietary restrictions when making your reservation."
+  },
+  {
+    "question": "What is your cancellation policy?",
+    "answer": "We appreciate at least 24 hours notice for cancellations. Please call us if you need to modify or cancel your reservation."
+  },
+  {
+    "question": "Do you offer catering?",
+    "answer": "Yes, we offer full-service catering for events of any size. Please call us to discuss your catering needs."
+  },
+  {
+    "question": "Where are you located?",
+    "answer": "We're located at 456 Culinary Street, New York, NY 10002, in the heart of the culinary district."
+  },
+  {
+    "question": "Do you have a kids menu?",
+    "answer": "Yes! We have a children's menu with smaller portions and kid-friendly options available."
+  },
+  {
+    "question": "Can I bring my own wine?",
+    "answer": "We have an extensive wine list, but if you'd like to bring your own, we charge a corkage fee of $25 per bottle."
+  },
+  {
+    "question": "Do you have outdoor seating?",
+    "answer": "Yes, we have a beautiful outdoor patio that's open seasonally. Reservations for outdoor seating are recommended."
+  },
+  {
+    "question": "What payment methods do you accept?",
+    "answer": "We accept all major credit cards, cash, and mobile payments like Apple Pay and Google Pay."
+  }
+]

@@ -1,0 +1,81 @@
+# Business Configuration Template
+# Copy this file and customize for your business
+# Example: cp _template.yaml my_business.yaml
+
+business:
+  name: "Your Business Name"
+  slug: "your_business_slug"
+  industry: "general"
+  timezone: "America/New_York"
+
+# AI Role: receptionist, sales, operations, support, etc.
+role: "receptionist"
+
+# Business hours (24-hour format)
+hours:
+  monday: "09:00-17:00"
+  tuesday: "09:00-17:00"
+  wednesday: "09:00-17:00"
+  thursday: "09:00-17:00"
+  friday: "09:00-17:00"
+  saturday: "closed"
+  sunday: "closed"
+
+# Location info (optional)
+location:
+  address: ""
+  city: ""
+  state: ""
+  zip: ""
+  phone: ""
+  email: ""
+
+# AI Personality
+personality:
+  tone: "professional"  # professional, friendly, casual, formal
+  language: "English"
+  greeting: "Hello! How can I help you today?"
+  name: "AI Assistant"
+
+# Response rules
+rules:
+  - "Always be polite and helpful"
+  - "If you don't know something, say so honestly"
+  - "Ask for clarification when needed"
+  - "Never share sensitive information via chat"
+  - "Always confirm important details before proceeding"
+
+# Services offered (list format)
+services:
+  - "Consultation"
+  - "Product Information"
+  - "Booking Assistance"
+  - "Customer Support"
+
+# Common FAQs (used for knowledge retrieval)
+faqs:
+  - question: "What are your business hours?"
+    answer: "We're open Monday through Friday, 9 AM to 5 PM."
+  - question: "How can I contact you?"
+    answer: "You can reach us by phone at [phone] or email at [email]."
+  - question: "Do you offer discounts?"
+    answer: "Please contact us directly to learn about our current promotions."
+
+# Pricing (optional)
+pricing:
+  - item: "Basic Service"
+    price: "$50"
+    description: "Basic service description"
+  - item: "Premium Service"
+    price: "$100"
+    description: "Premium service description"
+
+# Knowledge base directory (relative to project root)
+knowledge_dir: "knowledge_base/your_business_slug"
+
+# Automation settings
+automation:
+  auto_create_lead: true
+  auto_reply: true
+  send_confirmation_email: false
+  collect_feedback: false

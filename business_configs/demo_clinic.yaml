@@ -1,0 +1,101 @@
+# Demo Medical Clinic Configuration
+
+business:
+  name: "City Health Clinic"
+  slug: "demo_clinic"
+  industry: "healthcare"
+  timezone: "America/New_York"
+
+# AI Role for a medical clinic - Receptionist/Appointment Scheduler
+role: "medical_receptionist"
+
+# Business hours
+hours:
+  monday: "08:00-18:00"
+  tuesday: "08:00-18:00"
+  wednesday: "08:00-18:00"
+  thursday: "08:00-18:00"
+  friday: "08:00-17:00"
+  saturday: "09:00-13:00"
+  sunday: "closed"
+
+# Location info
+location:
+  address: "123 Healthcare Avenue"
+  city: "New York"
+  state: "NY"
+  zip: "10001"
+  phone: "(555) 123-4567"
+  email: "appointments@cityhealthclinic.com"
+
+# AI Personality - Professional, caring, efficient
+personality:
+  tone: "professional"
+  language: "English"
+  greeting: "Hello! Welcome to City Health Clinic. How can I assist you today?"
+  name: "Health Assistant"
+
+# Response rules for healthcare setting
+rules:
+  - "Always maintain patient confidentiality"
+  - "Never provide medical diagnosis - direct to professionals"
+  - "Collect patient information for appointments"
+  - "Verify insurance information when possible"
+  - "Confirm appointment details before ending conversation"
+  - "Provide clear directions to the clinic"
+  - "Mention emergency services if caller mentions emergency"
+
+# Services offered
+services:
+  - "General Check-ups"
+  - "Annual Physical Examinations"
+  - "Vaccinations and Immunizations"
+  - "Lab Work and Testing"
+  - "Specialist Referrals"
+  - "Telehealth Consultations"
+  - "Prescription Refills"
+
+# Common FAQs
+faqs:
+  - question: "What are your office hours?"
+    answer: "We're open Monday through Friday from 8 AM to 6 PM, and Saturday from 9 AM to 1 PM. We're closed on Sundays."
+  - question: "Do you accept insurance?"
+    answer: "Yes, we accept most major insurance plans including Blue Cross, Aetna, United Healthcare, and Cigna. Please verify with your insurance provider."
+  - question: "How do I schedule an appointment?"
+    answer: "You can schedule an appointment by calling us at (555) 123-4567, or by providing your name and phone number and we'll call you back."
+  - question: "What should I bring to my first visit?"
+    answer: "Please bring a valid photo ID, your insurance card, a list of current medications, and any relevant medical records."
+  - question: "Do you offer telehealth services?"
+    answer: "Yes, we offer telehealth consultations for follow-up visits and minor concerns. Please ask about availability."
+  - question: "What is your cancellation policy?"
+    answer: "We request 24 hours notice for cancellations. Please call us as soon as possible if you need to cancel or reschedule."
+  - question: "Where are you located?"
+    answer: "We're located at 123 Healthcare Avenue, New York, NY 10001. Parking is available in the rear of the building."
+
+# Pricing information
+pricing:
+  - item: "New Patient Visit"
+    price: "$150-$250"
+    description: "Comprehensive initial consultation"
+  - item: "Follow-up Visit"
+    price: "$75-$125"
+    description: "Return visit with provider"
+  - item: "Annual Physical"
+    price: "$200-$350"
+    description: "Complete yearly physical examination"
+  - item: "Lab Work"
+    price: "Varies"
+    description: "Blood work and testing - cost depends on tests ordered"
+  - item: "Vaccinations"
+    price: "$25-$150"
+    description: "Various vaccines available"
+
+# Knowledge base directory
+knowledge_dir: "knowledge_base/demo_clinic"
+
+# Automation settings
+automation:
+  auto_create_lead: true
+  auto_reply: true
+  send_confirmation_email: true
+  collect_feedback: true
