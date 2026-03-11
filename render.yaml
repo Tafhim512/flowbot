@@ -1,0 +1,32 @@
+# Render.com Deployment Configuration
+# 
+# Instructions:
+# 1. Push your code to GitHub
+# 2. Go to render.com and create a new Web Service
+# 3. Connect your GitHub repository
+# 4. Use these settings:
+#    - Build Command: pip install -r requirements.txt
+#    - Start Command: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+# 5. Add environment variables in Render dashboard:
+#    - DATABASE_URL (for PostgreSQL)
+#    - OPENAI_API_KEY (your OpenAI key)
+#    - OPENAI_MODEL (optional, default: gpt-3.5-turbo)
+
+services:
+  - type: web
+    name: flowbot
+    env: python
+    pythonVersion: "3.11"
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-3.5-turbo
+      - key: LOG_LEVEL
+        value: INFO
+      - key: APP_ENV
+        value: production
