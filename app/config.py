@@ -2,26 +2,26 @@
 App-wide configuration loaded from environment variables.
 """
 
-import os
-from dotenv import load_dotenv
-
-# Load .env file if it exists
-load_dotenv()
+from pydantic_settings import BaseSettings
 
 
-class Settings:
+class Settings(BaseSettings):
     """All settings are read from .env or real environment variables."""
 
     # Database
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./flowbot.db")
+    DATABASE_URL: str = "sqlite:///./flowbot.db"
 
     # LLM
-    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "sk-placeholder")
-    OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
+    OPENAI_API_KEY: str = "sk-placeholder"
+    OPENAI_MODEL: str = "gpt-3.5-turbo"
 
     # App
-    LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
-    APP_ENV: str = os.getenv("APP_ENV", "development")
+    LOG_LEVEL: str = "INFO"
+    APP_ENV: str = "development"
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
 
 
 # Single shared instance — import this everywhere
